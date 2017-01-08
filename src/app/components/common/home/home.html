@@ -1,0 +1,17 @@
+<navbar></navbar>
+<messages></messages>
+<main>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>{{ $ctrl.title }}</h1>
+
+            <p>{{ $ctrl.welcomeMessage }}</p>
+        </div>
+        Karten:
+        <ul>
+            <li ng-repeat="map in $ctrl.maps">
+                {{map.name}}
+            </li>
+        </ul>
+    </div>
+</main>
