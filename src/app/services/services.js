@@ -1,9 +1,13 @@
 import angular from 'angular';
 
 import mapService from './mapService/mapService'
+import pointDefinitionService from './pointDefinitionService/pointDefinitionService'
+import fieldDefinitionService from './fieldDefinitionService/fieldDefinitionService';
 
 let servicesModul = angular.module('app.services', [
-    mapService.name
+    mapService.name,
+    pointDefinitionService.name,
+    fieldDefinitionService.name
 ]);
 
 export default servicesModul;

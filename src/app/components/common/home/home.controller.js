@@ -8,7 +8,7 @@ class HomeController {
         this.mapService = mapService;
         this.messagesService = messagesService;
 
-        this.title = 'ESTA WebJS - Starterkit';
+        this.title = 'Mapirium';
         this.welcomeMessage = 'Herzlich Willkommen';
 
         this.maps = [];
@@ -21,7 +21,7 @@ class HomeController {
                 this.maps = response;
             },
             (error) => {
-                this.messagesService.errorMessage('Ooops!! Etwas hat nicht funktioniert', false);
+                this.messagesService.errorMessage('Ooops!! Etwas hat nicht funktioniert: ' + error, false);
             });
     }
 }

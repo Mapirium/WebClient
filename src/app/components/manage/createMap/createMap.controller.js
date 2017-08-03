@@ -1,7 +1,11 @@
 class CreateMapController {
     
     /*@ngInject*/
-    constructor() {
+    constructor(mapService, pointDefinitionService, fieldDefinitionService) {
+        this.mapService = mapService;
+        this.pointDefinitionService = pointDefinitionService;
+        this.fieldDefinitionService = fieldDefinitionService;
+
         this.fieldDefinitions = {};
         this.fieldDefinitionCount = 0;
 
@@ -13,6 +17,13 @@ class CreateMapController {
         return {
             name: '',
             title: ''
+        }
+    }
+
+    createPointDefinition(mapId){
+        return {
+            name: '',
+            'mapId': mapId
         }
     }
 
@@ -36,7 +47,28 @@ class CreateMapController {
     }
 
     saveMap(){
-        alert("Karte erstellen");
+        // Karte erstellen
+        this.mapService.createMap(this.map).$promise.then((response) => {
+            // ID der erstellten Map auslesen
+            var mapId = response.publicId;
+
+            // Punkt erstellen
+            var pointDef = this.createPointDefinition(mapId);
+            pointDef.name = this.map.title;
+
+            // Punkt speichern
+            this.pointDefinitionService.createPointDefinition(pointDef, mapId).$promise.then((response) => {
+                // ID der Punkt-Definition auslesen
+                var pointDefId = response.publicId;
+
+                // Felder speichern
+                Object.keys(this.fieldDefinitions).forEach((key,index) => {
+                    var fieldDef = this.fieldDefinitions[key];
+
+                    this.fieldDefinitionService.createFieldDefinition(fieldDef, mapId, pointDefId);
+                })
+            })
+        })
     }
 }
 
