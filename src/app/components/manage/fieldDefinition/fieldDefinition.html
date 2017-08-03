@@ -1,0 +1,20 @@
+<div class="form-group">
+    <label for="fieldType">Typ des Feldes:</label>
+    <select name="fieldType" id="fieldType" class="form-control">
+        <option value="string">Text (eine Zeile)</option>
+        <option value="text">Text (mehrere Zeilen)</option>
+        <option value="date">Datum</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="labelText">Name:</label>
+    <input type="text" id="labelText" class="form-control" ng-model="$ctrl.fieldDefinition.label">
+</div>
+<div class="form-group">
+    <label for="fieldDescription">Beschreibung:</label>
+    <input type="text" id="fieldDescription" class="form-control" ng-model="$ctrl.fieldDefinition.description">
+</div>
+<div class="form-group">
+    <label for="fieldMandatory">Zwingend:</label>
+    <toggle ng-model="$ctrl.fieldDefinition.mandatory" id="fieldMandatory" on="ja" off="nein"></toggle>
+</div>

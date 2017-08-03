@@ -15,6 +15,8 @@ import ngResource from 'angular-resource';
 import ngTranslate from 'angular-translate';
 import ngTranslateStaticFilesLoader from 'angular-translate-loader-static-files';
 import uiBootstrap from 'angular-ui-bootstrap';
+import 'angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min'
+import 'angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.css'
 
 // Style Imports
 
@@ -29,7 +31,7 @@ import langEn from './languages/lang-en.json';
 
 angular.module('app', [
     uiRouter, ngTranslate, ngTranslateStaticFilesLoader, ngResource,
-    uiBootstrap, Components.name, Services.name
+    uiBootstrap, 'ui.toggle', Components.name, Services.name
 ])
     .config(/*@ngInject*/($translateProvider, $httpProvider) => {
 

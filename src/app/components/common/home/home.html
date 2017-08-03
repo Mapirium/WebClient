@@ -9,7 +9,7 @@
         </div>
         Karten:
         <ul>
-            <li ng-repeat="map in $ctrl.maps">
+            <li ng-repeat="map in $ctrl.maps._embedded.maps">
                 {{map.name}}
             </li>
         </ul>

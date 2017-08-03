@@ -9,12 +9,11 @@
  * @since 04.12.2015, 2015.
  */
 import angular from 'angular';
-import commonComponents from './common/common';
-import securityComponents from './security/security';
-import manage from './manage/manage';
+import createMap from './createMap/createMap';
+import fieldDefinition from './fieldDefinition/fieldDefinition';
 
-let componentModule = angular.module('app.components', [
-    commonComponents.name, securityComponents.name, manage.name
+let manageModule = angular.module('app.componentes.manage', [
+    createMap.name, fieldDefinition.name
 ]);
 
-export default componentModule;
+export default manageModule;
