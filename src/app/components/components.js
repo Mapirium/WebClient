@@ -12,9 +12,10 @@ import angular from 'angular';
 import commonComponents from './common/common';
 import securityComponents from './security/security';
 import manage from './manage/manage';
+import mapRoot from './map/map';
 
 let componentModule = angular.module('app.components', [
-    commonComponents.name, securityComponents.name, manage.name
+    commonComponents.name, securityComponents.name, manage.name, mapRoot.name
 ]);
 
 export default componentModule;
