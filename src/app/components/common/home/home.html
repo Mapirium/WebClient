@@ -10,7 +10,7 @@
         Karten:
         <ul>
             <li ng-repeat="map in $ctrl.maps._embedded.maps">
-                <a ui-sref="map({mapId: map.name})">{{map.name}}</a>
+                <a ui-sref="map({mapId: map.publicId})">{{map.title}}</a>
             </li>
         </ul>
     </div>
