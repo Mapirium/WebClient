@@ -1,17 +1,29 @@
 class MapController {
     
     /*@ngInject*/
-    constructor($stateParams) {
+    constructor($stateParams, $scope) {
         this.$stateParams = $stateParams;
-        this.content = 'Hello, Map';
+        this.$scope = $scope;
 
-        this.currentMap = this.getCurrentMap();
+        // Angezeigter Bereich der Karte
+        this.mapBounds = [];
+        this.mapCenter = {};
+
+        this.message = "leer";
+
+        // ID der anzuzeigenden Map auslesen. Diese wird als Teil der URL übergeben
+        this.currentMapId = this.$stateParams.mapId;
+
+        this.$scope.$watch('$ctrl.mapBounds', (newValue, oldValue) => {this.boundChanged(newValue, oldValue)});
     }
 
-    getCurrentMap(){
-        return this.$stateParams.mapId;
+    boundChanged(newValue, oldValue){
+        if(newValue != null) {
+            console.log("Neuer Wert");
+            this.message = "Grenzen haben sich geändert: " + newValue;
+        }
     }
-    
+
 }
 
 export default MapController;
