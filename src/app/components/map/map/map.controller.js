@@ -1,3 +1,5 @@
+import markerIcon from './marker-icon.png';
+
 class MapController {
     
     /*@ngInject*/
@@ -11,7 +13,14 @@ class MapController {
         this.mapBounds = [];
         this.mapCenter = {};
 
+        // Marker auf der Karte
+        this.markers = [];
+
         this.message = "leer";
+
+        this.markerIcon = {
+            iconUrl: markerIcon
+        };
 
         // ID der anzuzeigenden Map auslesen. Diese wird als Teil der URL übergeben
         this.currentMapId = this.$stateParams.mapId;
@@ -29,10 +38,30 @@ class MapController {
         this.pointDataService.findPointsInArea(this.currentMapId, newValue).$promise.then(
             (response) => {
                 this.message = response;
+                var pointData = response._embedded.pointData;
+                var pointMarkers = [];
+                for(var i = 0; i < pointData.length; i++) {
+                    pointMarkers.push(this.createMarker(pointData[i]));
+                }
+                this.markers = pointMarkers;
             },
             (error) => {
                 this.messagesService.errorMessage("Punkte konnte nicht geladen werden: " + error, false);
             });
+    }
+
+    /**
+     * Erstellt einen neuen Marker für die Karte
+     * @param pointData Daten des darzustellenden Punktes
+     */
+    createMarker(pointData){
+        var marker = {
+            "lat": pointData.location.latitude,
+            "lng": pointData.location.longitude,
+            "message": "PublicID: " + pointData.publicId,
+            "icon": this.markerIcon
+        };
+        return marker;
     }
 
 }
