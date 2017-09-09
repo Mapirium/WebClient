@@ -10,13 +10,18 @@
 
 // Vendor-Imports
 import angular from 'angular';
+// import nemLogging from 'angular-simple-logger';
+import 'angular-simple-logger/dist/index';
 import uiRouter from 'angular-ui-router';
 import ngResource from 'angular-resource';
 import ngTranslate from 'angular-translate';
 import ngTranslateStaticFilesLoader from 'angular-translate-loader-static-files';
 import uiBootstrap from 'angular-ui-bootstrap';
-import 'angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min'
-import 'angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.css'
+import 'angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min';
+import 'angular-bootstrap-toggle/dist/angular-bootstrap-toggle.min.css';
+import 'leaflet/dist/leaflet'
+import 'leaflet/dist/leaflet.css'
+import 'ui-leaflet/dist/ui-leaflet';
 
 // Style Imports
 
@@ -30,8 +35,8 @@ import langDe from './languages/lang-de.json';
 import langEn from './languages/lang-en.json';
 
 angular.module('app', [
-    uiRouter, ngTranslate, ngTranslateStaticFilesLoader, ngResource,
-    uiBootstrap, 'ui.toggle', Components.name, Services.name
+    'nemLogging', uiRouter, ngTranslate, ngTranslateStaticFilesLoader, ngResource,
+    uiBootstrap, 'ui.toggle', 'ui-leaflet', Components.name, Services.name
 ])
     .config(/*@ngInject*/($translateProvider, $httpProvider) => {
 
