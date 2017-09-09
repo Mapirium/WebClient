@@ -1,4 +1,5 @@
 import markerIcon from './marker-icon.png';
+import markerIconShadow from './marker-shadow.png';
 
 class MapController {
     
@@ -19,7 +20,12 @@ class MapController {
         this.message = "leer";
 
         this.markerIcon = {
-            iconUrl: markerIcon
+            iconUrl: markerIcon,
+            shadowUrl: markerIconShadow,
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
         };
 
         // ID der anzuzeigenden Map auslesen. Diese wird als Teil der URL übergeben
@@ -56,8 +62,8 @@ class MapController {
      */
     createMarker(pointData){
         var marker = {
-            "lat": pointData.location.latitude,
-            "lng": pointData.location.longitude,
+            lat: pointData.location.latitude,
+            lng: pointData.location.longitude,
             "message": "PublicID: " + pointData.publicId,
             "icon": this.markerIcon
         };
