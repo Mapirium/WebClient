@@ -5,11 +5,12 @@ import markerIconShadow from './marker-shadow.png';
 class MapController {
     
     /*@ngInject*/
-    constructor($stateParams, $scope, pointDataService, messagesService) {
+    constructor($stateParams, $scope, pointDataService, messagesService, mapService) {
         this.$stateParams = $stateParams;
         this.$scope = $scope;
         this.pointDataService = pointDataService;
         this.messagesService = messagesService;
+        this.mapService = mapService;
 
         // Angezeigter Bereich der Karte
         this.mapBounds = {
@@ -23,6 +24,7 @@ class MapController {
 
         // Aktuell ausgewählter Marker
         this.selectedMarker = null;
+        this.selectedPoint = null;
 
         this.message = "leer";
 
@@ -46,6 +48,9 @@ class MapController {
 
         // ID der anzuzeigenden Map auslesen. Diese wird als Teil der URL übergeben
         this.currentMapId = this.$stateParams.mapId;
+
+        // Karte laden
+        this.map = this.mapService.getMap(this.currentMapId);
 
         this.$scope.$watch('$ctrl.mapBounds', (newValue, oldValue) => {this.boundChanged(newValue, oldValue)});
         this.$scope.$on('leafletDirectiveMarker.click', (event, args) => {this.markerClicked(event, args)});
@@ -154,6 +159,7 @@ class MapController {
         this.selectedMarker = marker;
         this.selectedMarker.icon = this.selectedMarkerIcon;
         this.selectedMarker.focus = true;
+        this.selectedPoint = point;
     }
 
     /**

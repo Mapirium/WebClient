@@ -2,6 +2,7 @@ import angular from 'angular';
 
 import template from './map.html';
 import controller from './map.controller.js';
+import './map.css';
 
 let mapModule = angular.module('map', [])
 

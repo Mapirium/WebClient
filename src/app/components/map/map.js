@@ -10,9 +10,11 @@
  */
 import angular from 'angular';
 import map from './map/map';
+import pointDetail from './pointdetail/pointdetail';
+import field from './field/field';
 
 let mapRootModule = angular.module('app.componentes.mapRoot', [
-    map.name
+    map.name, pointDetail.name, field.name
 ]);
 
 export default mapRootModule;

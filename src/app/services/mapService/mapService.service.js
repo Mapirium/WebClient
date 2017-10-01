@@ -14,6 +14,10 @@ class MapService {
     createMap(map){
         return this.Map.save(map);
     }
+
+    getMap(mapId){
+        return this.Map.get({"mapId": mapId});
+    }
 }
 
 export default MapService;

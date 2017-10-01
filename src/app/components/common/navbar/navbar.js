@@ -18,7 +18,10 @@ let navbarModule = angular.module('navbar', [
 ])
     .component('navbar', {
         template,
-        controller
+        controller,
+        bindings: {
+            mapName: '<'
+        }
     });
 
 export default navbarModule;

@@ -1,0 +1,4 @@
+<div class="pointDetail">
+    <p>Angezeigter Punkt: {{$ctrl.point.publicId}}</p>
+    <field ng-repeat="fielddefinition in $ctrl.fieldDefinitions" field-definition="fielddefinition" field-data="$ctrl.fieldsPerDefinition[fielddefinition.publicId]"></field>
+</div>

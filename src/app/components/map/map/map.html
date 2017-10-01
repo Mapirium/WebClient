@@ -1,9 +1,12 @@
-<navbar></navbar>
+<navbar map-name="$ctrl.map.title"></navbar>
 <messages></messages>
 <main>
     <p>Hier kommt die Karte: {{$ctrl.currentMapId}}</p>
-    <leaflet bounds="$ctrl.mapBounds" lf-center="$ctrl.mapCenter" markers="$ctrl.markers" height="480px" width="640px"></leaflet>
-    <p>
+    <div class="map">
+        <leaflet bounds="$ctrl.mapBounds" lf-center="$ctrl.mapCenter" markers="$ctrl.markers" height="480px" width="640px"></leaflet>
+    </div>
+    <pointdetail point="$ctrl.selectedPoint"></pointdetail>
+    <div class="debugInfos">
         Süd West:<br>
         Bounds: {{$ctrl.mapBounds}}<br>
         Lat: {{$ctrl.mapBounds.southWest.lat}}<br>
@@ -14,5 +17,5 @@
         <a href="http://localhost:11004/map/{{$ctrl.currentMapId}}/point/search/area/{{$ctrl.mapBounds.northEast.lat}},{{$ctrl.mapBounds.northEast.lng}},{{$ctrl.mapBounds.southWest.lat}},{{$ctrl.mapBounds.southWest.lng}}">REST-Link</a><br>
         <br>
         Nachricht: {{$ctrl.message}}
-    </p>
+    </div>
 </main>
